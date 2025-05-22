@@ -1,0 +1,22 @@
+{
+  "name": "sdsautomationproject",
+  "version": "1.0.0",
+  "description": "## Overview - Project started: May 22, 2025 - Requested by: Gordon Huie",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EDiosanaFG/SDSAutomationProject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EDiosanaFG/SDSAutomationProject/issues"
+  },
+  "homepage": "https://github.com/EDiosanaFG/SDSAutomationProject#readme",
+  "dependencies": {
+    "typescript": "^5.8.3"
+  }
+}
