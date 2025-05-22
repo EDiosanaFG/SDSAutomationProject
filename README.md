@@ -1,5 +1,8 @@
 # SDS Automation Project
 
+## How to Run
+Run `npm start` in the terminal.
+
 ## Overview
 - Project started: May 22, 2025
 - Requested by: Gordon Huie
