@@ -1,0 +1,8 @@
+{
+    "meta": {
+        "description": "Contains configuration files for this app."
+    },
+    "server": {
+        "port": 7878
+    }
+}

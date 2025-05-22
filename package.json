@@ -4,6 +4,7 @@
   "description": "## Overview - Project started: May 22, 2025 - Requested by: Gordon Huie",
   "main": "index.js",
   "scripts": {
+    "start": "node ./dist/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,6 +18,8 @@
   },
   "homepage": "https://github.com/EDiosanaFG/SDSAutomationProject#readme",
   "dependencies": {
+    "@types/express": "^5.0.2",
+    "express": "^5.1.0",
     "typescript": "^5.8.3"
   }
 }
