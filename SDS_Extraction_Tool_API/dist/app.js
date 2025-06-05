@@ -21,7 +21,7 @@ const getSDSJson_1 = __importDefault(require("./functions/getSDSJson"));
 const PORT = config_json_1.server.port;
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
-app.use((0, cors_1.default)({ origin: 'http://localhost:5173' }));
+app.use((0, cors_1.default)({ origin: 'https://isura-sds-automation.web.app/' }));
 // Define middleware
 const upload = (0, multer_1.default)();
 app.get('/', (req, res) => {
@@ -70,6 +70,8 @@ app.post('/api/extract', upload.single('file'), (req, res) => __awaiter(void 0, 
         return;
     }
 }));
-app.listen(PORT, () => {
-    console.log(`Running on port ${PORT}`);
-});
+// app.listen(PORT, () => {
+//     console.log(`Running on port ${PORT}`);
+// });
+// Exporting app to work with Firebase Functions
+exports.default = app;
