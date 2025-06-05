@@ -27,7 +27,7 @@
       // Send the file to the API.
       const form = new FormData();
       form.append('file', file);
-      const url = 'http://localhost:7878/api/extract';
+      const url = 'https://isura-sds-automation-api.duckdns.org/';
       const res = await fetch(url, {
         method: 'POST',
         body: form
