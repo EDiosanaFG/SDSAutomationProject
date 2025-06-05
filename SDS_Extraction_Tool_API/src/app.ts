@@ -74,6 +74,7 @@ app.post('/api/extract', upload.single('file'), async (req: any, res: Response) 
     }
 });
 
-app.listen(PORT, () => {
+// Added "0.0.0.0" so it can be hosted locally
+app.listen(PORT, "0.0.0.0", () => {
     console.log(`Running on port ${PORT}`);
 });

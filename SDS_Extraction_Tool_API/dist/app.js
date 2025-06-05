@@ -70,8 +70,7 @@ app.post('/api/extract', upload.single('file'), (req, res) => __awaiter(void 0, 
         return;
     }
 }));
-// app.listen(PORT, () => {
-//     console.log(`Running on port ${PORT}`);
-// });
-// Exporting app to work with Firebase Functions
-exports.default = app;
+// Added "0.0.0.0" so it can be hosted locally
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Running on port ${PORT}`);
+});
