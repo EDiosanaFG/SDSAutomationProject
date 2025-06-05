@@ -31,7 +31,7 @@ As of June 6, 2025, this project uses Firebase for hosting. The following contai
 3. Choose `single-page app`
 4. Rewrite to `index.html` if you are using Vue Router
 5. Decline setting up `automatic builds`
-6. Verify that firebase.json has something like:
+6. Verify that `firebase.json` has something like:
 ```json
 {
   "hosting": {
