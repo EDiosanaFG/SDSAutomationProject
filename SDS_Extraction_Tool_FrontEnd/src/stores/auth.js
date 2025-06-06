@@ -11,7 +11,7 @@ export const useAuthStore = defineStore('auth', {
     }),
     getters: {
         isLockedOut: (state) => Date.now() < state.lockoutUntil,
-        secondsLeft: (state) => state.lockoutUntil > Date.now() ? Math.ceil(state.lockoutUntil - Date.now() / 1000) : 0, // Math that calculates seconds
+        secondsLeft: (state) => state.lockoutUntil > Date.now() ? Math.ceil((state.lockoutUntil - Date.now()) / 1000) : 0, // Math that calculates seconds
     },
     actions: {
         login(enteredUsername, enteredPassword) {
