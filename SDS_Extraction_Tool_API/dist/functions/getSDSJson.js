@@ -28,7 +28,7 @@ const getSDSJsonFromString = (url, sdsString) => __awaiter(void 0, void 0, void 
     }
     try {
         // Send the string to the API and get the first half of the response
-        const response1 = yield OpenAIClient_1.openAIClient.responses.parse({
+        const response1Promise = OpenAIClient_1.openAIClient.responses.parse({
             model: 'o3-mini',
             input: [
                 { role: 'system', content: 'You have been given a raw string of a .pdf file. The .pdf file is a Safety Data Sheet. Extract the relevant data from this string and return it.' },
@@ -39,7 +39,7 @@ const getSDSJsonFromString = (url, sdsString) => __awaiter(void 0, void 0, void 
             }
         });
         // Send the string to the API and get the second half of the response
-        const response2 = yield OpenAIClient_1.openAIClient.responses.parse({
+        const response2Promise = OpenAIClient_1.openAIClient.responses.parse({
             model: 'gpt-4.1',
             input: [
                 { role: 'system', content: 'Extract the relevant data from this string. ' },
@@ -49,6 +49,8 @@ const getSDSJsonFromString = (url, sdsString) => __awaiter(void 0, void 0, void 
                 format: (0, zod_1.zodTextFormat)(SDSJsonFormat_1.SDSJsonFormat_Half2, 'output')
             }
         });
+        const response1 = yield response1Promise;
+        const response2 = yield response2Promise;
         if (response1.error) {
             throw new Error(response1.error.message);
         }
