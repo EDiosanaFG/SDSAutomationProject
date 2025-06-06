@@ -22,9 +22,9 @@ const getSDSJsonFromString = async (url: string, sdsString: string): Promise<Obj
     try {
         // Send the string to the API and get the first half of the response
         const response1 = await openAIClient.responses.parse({
-            model: 'gpt-4.1',
+            model: 'o3-mini',
             input: [
-                { role: 'system', content: 'Extract the relevant data from this string. '},
+                { role: 'system', content: 'You have been given a raw string of a .pdf file. The .pdf file is a Safety Data Sheet. Extract the relevant data from this string and return it.'},
                 { role: 'user', content: sdsString } 
             ],
             text: {
