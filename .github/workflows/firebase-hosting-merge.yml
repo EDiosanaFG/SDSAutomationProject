@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: npm run build
-        working-directory: ./SDSAutomationProject/SDS_Extraction_Tool_FrontEnd
+        working-directory: ./SDS_Extraction_Tool_FrontEnd
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
