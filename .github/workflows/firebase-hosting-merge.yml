@@ -21,3 +21,4 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_ISURA_SDS_AUTOMATION }}
           channelId: live
           projectId: isura-sds-automation
+          entryPoint: ./SDS_Extraction_Tool_FrontEnd
