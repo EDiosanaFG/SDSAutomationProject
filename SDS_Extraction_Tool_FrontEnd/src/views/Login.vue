@@ -28,11 +28,11 @@ const handleSubmit = async () => {
         <form @submit.prevent="handleSubmit">
             <div>
                 <label for="username">Username:</label>
-                <input id="username" type="text" v-model="username" required />
+                <input id="username" type="text" v-model="username" autocomplete="off" required/>
             </div>
             <div>
                 <label for="password">Password:</label>
-                <input id="password" type="password" v-model="password" required />
+                <input id="password" type="password" v-model="password" autocomplete="off" required/>
             </div>
             <button type="submit" :disabled="auth.isLockedOut || loading">
                 {{ loading ? "Logging in..." : "Login" }}
