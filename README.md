@@ -10,6 +10,13 @@ Run `npm start` in the terminal.
 ### Description
 This project is automates the conversion of Safety Data Sheets (SDS) from suppliers such that it appears as an Inovo safety data sheet. For example, if the user inputs a supplier's safety data sheet, it will output the relevant information from that sheet.
 
+### Technologies
+- DuckDNS for hosting the back-end API
+- Firebase for hosting the front-end
+- Vue.js with TypeScript for front-end
+- TypeScript and Express.js for back-end
+- OpenAI API for .pdf analysis
+
 ## Notes
 - The Inovo sheet is essentially just a rebranded and standardized version of the supplier data sheet
 - The Inovo sheet lists Inovo as the supplier
