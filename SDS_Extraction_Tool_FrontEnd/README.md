@@ -17,6 +17,9 @@ This is the front-end part of the Safety Data Sheet (SDS) Automation Project. It
 1. Install the npm packages with `npm i`
 2. Do `npm run build`
 
+## How to Deploy
+GitHub workflow actions have already been set up. When anything is pushed to main, it will update the page.
+
 ## Setting up Firebase Deployment
 As of June 6, 2025, this project uses Firebase for hosting. The following contains instructions on how to set up Firebase hosting if it has not already been set up.
 
