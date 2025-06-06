@@ -9,7 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "bcryptjs": "^3.0.2",
     "firebase-tools": "^14.6.0",
+    "pinia": "^3.0.3",
     "vue": "^3.5.13",
     "vue-loading-overlay": "^6.0.6"
   },

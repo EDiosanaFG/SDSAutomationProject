@@ -1,0 +1,10 @@
+{
+    "meta": {
+        "description": "Contains the urls used in this app"
+    },
+    "urls": {
+        "api": {
+            "extractSDSPdfInfo": "https://isura-sds-automation-api.duckdns.org/api/extract"
+        }
+    }
+}
