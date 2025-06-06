@@ -21,7 +21,7 @@ const getSDSJson_1 = __importDefault(require("./functions/getSDSJson"));
 const PORT = config_json_1.server.port;
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
-app.use((0, cors_1.default)({ origin: 'https://isura-sds-automation.web.app/' }));
+app.use((0, cors_1.default)({ origin: 'https://isura-sds-automation.web.app/', credentials: true }));
 // Define middleware
 const upload = (0, multer_1.default)();
 app.get('/', (req, res) => {

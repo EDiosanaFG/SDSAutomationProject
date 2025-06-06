@@ -9,7 +9,7 @@ const PORT = server.port;
 const app = express();
 
 app.use(express.json());
-app.use(cors({ origin: 'https://isura-sds-automation.web.app/' }));
+app.use(cors({ origin: 'https://isura-sds-automation.web.app/', credentials: true }));
 
 // Define middleware
 const upload = multer();
