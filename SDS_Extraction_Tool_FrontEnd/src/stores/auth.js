@@ -39,7 +39,11 @@ export const useAuthStore = defineStore('auth', {
                 }
                 const result = await axios.post(url, body);
 
-                if (result.isValid) {
+                if (result.isValid == undefined || result.isValid == null) {
+                    throw new Error('Failed to get response.');
+                }
+
+                if (result.isValid == true) {
                     // success: reset attempts/lockout
                     this.isAuthenticated = true;
                     localStorage.setItem('loggedIn', 'true');
