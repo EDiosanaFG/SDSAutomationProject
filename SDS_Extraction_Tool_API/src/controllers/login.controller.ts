@@ -13,7 +13,7 @@ export const Errors = {
     }
 }
 
-export default function (req: Request, res: Response) {
+export default async function (req: Request, res: Response) {
     try {
         if (!req.body || !req.body.username || !req.body.password) {
             res.status(401).send({
@@ -29,7 +29,7 @@ export default function (req: Request, res: Response) {
         } = req.body;
 
         // Compare the hash
-        const bcryptResult = bcrypt.compare(password, login.passwordHash);
+        const bcryptResult = await bcrypt.compare(password, login.passwordHash);
 
         if (username !== login.username || !bcryptResult) {
             res.status(401).send({
