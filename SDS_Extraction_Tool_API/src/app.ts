@@ -18,7 +18,7 @@ const upload = multer();
 app.post('/api/extract', upload.single('file'), extractController);
 
 // Route for verifying the user
-app.post('api/users/login', loginController)
+app.post('api/users/login', loginController);
 
 // Added "0.0.0.0" so it can be hosted locally
 app.listen(PORT, "0.0.0.0", () => {
