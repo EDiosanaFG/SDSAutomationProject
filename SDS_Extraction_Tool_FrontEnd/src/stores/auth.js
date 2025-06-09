@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia';
+import { urls } from '../config/urls';
 import axios from 'axios';
 
 export const useAuthStore = defineStore('auth', {
@@ -24,14 +25,19 @@ export const useAuthStore = defineStore('auth', {
                 return false;
             }
 
+            // Simply do not allow if username and password are not entered
+            if (!enteredUsername, !enteredPassword) {
+                return false;
+            }
+
             // Check credentials
             try {
-                const result = await axios.post(urls.api.base + urls.api.login).body(
-                    {
-                        username: enteredUsername,
-                        password: enteredPassword
-                    }
-                );
+                const url = urls.api.base + urls.api.login;
+                const body = {
+                    enteredUsername,
+                    enteredPassword
+                }
+                const result = await axios.post(url, body);
 
                 if (result.isValid) {
                     // success: reset attempts/lockout
