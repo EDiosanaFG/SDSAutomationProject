@@ -20,6 +20,7 @@ export default function (req: Request, res: Response) {
                 isValid: false,
                 error: Errors.ERR_MISSING_PARAMS
             });
+            return;
         }
 
         const {
@@ -35,11 +36,14 @@ export default function (req: Request, res: Response) {
                 isValid: false,
                 error: Errors.ERR_INVALID_CREDENTIALS
             });
+            return;
         }
 
         res.status(200).send({ isValid: true });
+        return;
     } catch (error) {
         console.error(error);
         res.status(500).send({ error: "Unknown error." });
+        return;
     }
 }

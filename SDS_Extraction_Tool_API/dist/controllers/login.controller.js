@@ -24,6 +24,7 @@ function default_1(req, res) {
                 isValid: false,
                 error: exports.Errors.ERR_MISSING_PARAMS
             });
+            return;
         }
         const { username, password } = req.body;
         // Compare the hash
@@ -33,11 +34,14 @@ function default_1(req, res) {
                 isValid: false,
                 error: exports.Errors.ERR_INVALID_CREDENTIALS
             });
+            return;
         }
         res.status(200).send({ isValid: true });
+        return;
     }
     catch (error) {
         console.error(error);
         res.status(500).send({ error: "Unknown error." });
+        return;
     }
 }
