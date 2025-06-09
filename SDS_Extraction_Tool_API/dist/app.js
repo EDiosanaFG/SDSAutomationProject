@@ -18,7 +18,7 @@ const upload = (0, multer_1.default)();
 // Route for extracting .pdf files
 app.post('/api/extract', upload.single('file'), extract_controller_1.default);
 // Route for verifying the user
-app.post('api/users/login', login_controller_1.default);
+app.post('/api/users/login', login_controller_1.default);
 // Added "0.0.0.0" so it can be hosted locally
 app.listen(PORT, "0.0.0.0", () => {
     console.log(`Running on port ${PORT}`);
