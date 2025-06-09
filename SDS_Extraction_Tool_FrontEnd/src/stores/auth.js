@@ -1,7 +1,5 @@
 import { defineStore } from 'pinia';
 import { axios } from 'axios';
-import bcrypt from 'bcryptjs';
-import { resolveDirective } from 'vue';
 
 export const useAuthStore = defineStore('auth', {
     state: () => ({
