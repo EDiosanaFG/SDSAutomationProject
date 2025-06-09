@@ -1,11 +1,43 @@
 import { Request, Response } from "express";
+import { bcrypt } from "bcrypt";
+import { login } from "../json/config.json";
+
+export const Errors = {
+    ERR_MISSING_PARAMS: {
+        code: 'ERR_MISSING_PARAMS',
+        message: 'One or more required parameters are missing',
+    },
+    ERR_INVALID_CREDENTIALS: {
+        name: 'ERR_INVALID_CREDENTIALS',
+        message: 'Invalid credentials'
+    }
+}
 
 export default function (req: Request, res: Response) {
     try {
-        let verificationResult: boolean = false;
+        if (!req.body || !req.body.username || !req.body.passwordHash) {
+            res.status(401).send({
+                isValid: false,
+                error: Errors.ERR_MISSING_PARAMS
+            });
+        }
 
+        const {
+            username,
+            passwordHash
+        } = req.body;
 
-        res.status(200).send({ isValid: verificationResult });
+        // Compare the hash
+        const bcryptResult = bcrypt.compare(login.passwordHash, passwordHash);
+
+        if (username !== login.username || !bcryptResult) {
+            res.status(401).send({
+                isValid: false,
+                error: Errors.ERR_INVALID_CREDENTIALS
+            });
+        }
+
+        res.status(200).send({ isValid: true });
     } catch (error) {
         res.status(500).send({ error: error });
     }
