@@ -13,7 +13,7 @@ const loading = ref(false);
 const handleSubmit = async () => {
     loading.value = true;
     error.value = "";
-    if (auth.login(username.value, password.value)) {
+    if (await auth.login(username.value, password.value)) {
         router.push("/");
     } else {
         error.value = "Invalid credentials";
