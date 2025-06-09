@@ -4,5 +4,12 @@
     },
     "server": {
         "port": 7878
+    },
+    "urls": {
+        "allowedOrigin": "https://isura-sds-automation.web.app"
+    },
+    "login": {
+        "username": "isura",
+        "passwordHash": ""
     }
 }
