@@ -26,7 +26,7 @@ export const useAuthStore = defineStore('auth', {
             }
 
             // Simply do not allow if username and password are not entered
-            if (!enteredUsername, !enteredPassword) {
+            if (!enteredUsername || !enteredPassword) {
                 return false;
             }
 
@@ -37,14 +37,12 @@ export const useAuthStore = defineStore('auth', {
                     username: enteredUsername,
                     password: enteredPassword
                 }
-                const result = await axios.post(url, body);
-                
-
-                if (!result.body || result.body.isValid == undefined || result.body.isValid == null) {
-                    throw new Error('Failed to get response.');
+                const { data } = await axios.post(url, body);
+                if (data.isValid === null || data.isValid === undefined) {
+                    throw new Error('Invalid server response');
                 }
 
-                if (result.body.isValid == true) {
+                if (data.isValid === true) {
                     // success: reset attempts/lockout
                     this.isAuthenticated = true;
                     localStorage.setItem('loggedIn', 'true');
