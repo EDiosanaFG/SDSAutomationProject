@@ -8,7 +8,7 @@ export const Errors = {
         message: 'One or more required parameters are missing',
     },
     ERR_INVALID_CREDENTIALS: {
-        name: 'ERR_INVALID_CREDENTIALS',
+        code: 'ERR_INVALID_CREDENTIALS',
         message: 'Invalid credentials'
     }
 }
