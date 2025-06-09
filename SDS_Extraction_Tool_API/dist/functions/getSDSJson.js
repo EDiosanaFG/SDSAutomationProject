@@ -29,7 +29,7 @@ const getSDSJsonFromString = (url, sdsString) => __awaiter(void 0, void 0, void 
     try {
         // Send the string to the API and get the first half of the response
         const response1Promise = OpenAIClient_1.openAIClient.responses.parse({
-            model: 'o3-2025-04-16',
+            model: 'o3',
             input: [
                 { role: 'system', content: 'You have been given a raw string of a .pdf file. The .pdf file is a Safety Data Sheet. Extract the relevant data from this string and return it.' },
                 { role: 'user', content: sdsString }
