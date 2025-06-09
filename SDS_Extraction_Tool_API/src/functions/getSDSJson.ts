@@ -20,11 +20,13 @@ const getSDSJsonFromString = async (url: string, sdsString: string): Promise<Obj
     }
 
     try {
+        const instructions = 'You have been given a raw string of a .pdf file. The .pdf file is a Safety Data Sheet. Extract the relevant data from this string and return it.';
         // Send the string to the API and get the first half of the response
         const response1Promise = openAIClient.responses.parse({
             model: 'gpt-4.1-2025-04-14',
+            temperature: 0,
             input: [
-                { role: 'system', content: 'You have been given a raw string of a .pdf file. The .pdf file is a Safety Data Sheet. Extract the relevant data from this string and return it.'},
+                { role: 'system', content: instructions },
                 { role: 'user', content: sdsString } 
             ],
             text: {
@@ -34,9 +36,10 @@ const getSDSJsonFromString = async (url: string, sdsString: string): Promise<Obj
 
         // Send the string to the API and get the second half of the response
         const response2Promise = openAIClient.responses.parse({
-            model: 'gpt-4.1',
+            model: 'gpt-4.1-2025-04-14',
+            temperature: 0,
             input: [
-                { role: 'system', content: 'Extract the relevant data from this string. '},
+                { role: 'system', content: instructions},
                 { role: 'user', content: sdsString } 
             ],
             text: {
