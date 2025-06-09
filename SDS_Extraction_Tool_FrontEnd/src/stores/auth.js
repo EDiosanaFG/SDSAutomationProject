@@ -34,8 +34,8 @@ export const useAuthStore = defineStore('auth', {
             try {
                 const url = urls.api.base + urls.api.login;
                 const body = {
-                    enteredUsername,
-                    enteredPassword
+                    username: enteredUsername,
+                    password: enteredPassword
                 }
                 const result = await axios.post(url, body);
 
