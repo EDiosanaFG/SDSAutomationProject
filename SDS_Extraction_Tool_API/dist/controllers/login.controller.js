@@ -1,9 +1,11 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Errors = void 0;
 exports.default = default_1;
-//@ts-ignore
-const bcrypt_1 = require("bcrypt");
+const bcrypt_1 = __importDefault(require("bcrypt"));
 const config_json_1 = require("../json/config.json");
 exports.Errors = {
     ERR_MISSING_PARAMS: {
@@ -25,7 +27,7 @@ function default_1(req, res) {
         }
         const { username, passwordHash } = req.body;
         // Compare the hash
-        const bcryptResult = bcrypt_1.bcrypt.compare(config_json_1.login.passwordHash, passwordHash);
+        const bcryptResult = bcrypt_1.default.compare(config_json_1.login.passwordHash, passwordHash);
         if (username !== config_json_1.login.username || !bcryptResult) {
             res.status(401).send({
                 isValid: false,
