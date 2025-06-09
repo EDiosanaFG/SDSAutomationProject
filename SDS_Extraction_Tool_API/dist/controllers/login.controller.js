@@ -19,15 +19,15 @@ exports.Errors = {
 };
 function default_1(req, res) {
     try {
-        if (!req.body || !req.body.username || !req.body.passwordHash) {
+        if (!req.body || !req.body.username || !req.body.password) {
             res.status(401).send({
                 isValid: false,
                 error: exports.Errors.ERR_MISSING_PARAMS
             });
         }
-        const { username, passwordHash } = req.body;
+        const { username, password } = req.body;
         // Compare the hash
-        const bcryptResult = bcrypt_1.default.compare(config_json_1.login.passwordHash, passwordHash);
+        const bcryptResult = bcrypt_1.default.compare(password, config_json_1.login.passwordHash);
         if (username !== config_json_1.login.username || !bcryptResult) {
             res.status(401).send({
                 isValid: false,
@@ -37,6 +37,7 @@ function default_1(req, res) {
         res.status(200).send({ isValid: true });
     }
     catch (error) {
-        res.status(500).send({ error: error });
+        console.error(error);
+        res.status(500).send({ error: "Unknown error." });
     }
 }
