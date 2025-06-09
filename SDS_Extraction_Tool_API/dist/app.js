@@ -15,9 +15,6 @@ app.use(express_1.default.json());
 app.use((0, cors_1.default)({ origin: config_json_1.urls.allowedOrigin, credentials: true }));
 // Define middleware
 const upload = (0, multer_1.default)();
-app.get('/', (req, res) => {
-    res.send(`Running on port ${PORT}`);
-});
 // Route for extracting .pdf files
 app.post('/api/extract', upload.single('file'), extract_controller_1.default);
 // Route for verifying the user

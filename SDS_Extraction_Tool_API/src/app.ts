@@ -1,4 +1,4 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
 import cors from 'cors';
 import multer from 'multer'; // File processing
 import { server, urls } from './json/config.json';
@@ -13,10 +13,6 @@ app.use(cors({ origin: urls.allowedOrigin, credentials: true }));
 
 // Define middleware
 const upload = multer();
-
-app.get('/', (req: Request, res: Response) => {
-    res.send(`Running on port ${PORT}`);
-});
 
 // Route for extracting .pdf files
 app.post('/api/extract', upload.single('file'), extractController);
