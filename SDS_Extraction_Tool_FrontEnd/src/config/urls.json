@@ -4,7 +4,9 @@
     },
     "urls": {
         "api": {
-            "extractSDSPdfInfo": "https://isura-sds-automation-api.duckdns.org/api/extract"
+            "base": "https://isura-sds-automation-api.duckdns.org/api/",
+            "extractSDSPdfInfo": "extract",
+            "login": "login"
         }
     }
 }

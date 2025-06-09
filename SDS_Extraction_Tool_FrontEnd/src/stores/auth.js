@@ -1,5 +1,7 @@
 import { defineStore } from 'pinia';
+import { axios } from 'axios';
 import bcrypt from 'bcryptjs';
+import { resolveDirective } from 'vue';
 
 export const useAuthStore = defineStore('auth', {
     state: () => ({
@@ -14,9 +16,7 @@ export const useAuthStore = defineStore('auth', {
         secondsLeft: (state) => state.lockoutUntil > Date.now() ? Math.ceil((state.lockoutUntil - Date.now()) / 1000) : 0, // Math that calculates seconds
     },
     actions: {
-        login(enteredUsername, enteredPassword) {
-            const FIXED_USER = 'isura';
-            const FIXED_HASH = '$2y$10$E6eHYJ/GUYjLLItm6MlSCOZcZz5QeNuAqKctI1ONXUKMs/wHK2bNq';
+        async login(enteredUsername, enteredPassword) {
             const NOW = Date.now();
             const MAX_ATTEMPTS = 5;
             const COOLDOWN_MS = 60_000; // 1 minute
@@ -27,33 +27,42 @@ export const useAuthStore = defineStore('auth', {
             }
 
             // Check credentials
-            if (
-                enteredUsername === FIXED_USER &&
-                bcrypt.compareSync(enteredPassword, FIXED_HASH)
-            ) {
-                // success: reset attempts/lockout
-                this.isAuthenticated = true;
-                localStorage.setItem('loggedIn', 'true');
+            try {
+                const result = await axios.post(urls.api.base + urls.api.login).body(
+                    {
+                        username: enteredUsername,
+                        password: enteredPassword
+                    }
+                );
 
-                this.attempts = 0;
-                this.lockoutUntil = 0;
-                localStorage.removeItem('loginAttempts');
-                localStorage.removeItem('lockoutUntil');
+                if (result.isValid) {
+                    // success: reset attempts/lockout
+                    this.isAuthenticated = true;
+                    localStorage.setItem('loggedIn', 'true');
 
-                return true;
+                    this.attempts = 0;
+                    this.lockoutUntil = 0;
+                    localStorage.removeItem('loginAttempts');
+                    localStorage.removeItem('lockoutUntil');
+
+                    return true;
+                }
+
+                // failure: increment attempts
+                this.attempts++;
+                localStorage.setItem('loginAttempts', this.attempts);
+
+                // if threshold reached, set a 1-minute lockout
+                if (this.attempts >= MAX_ATTEMPTS) {
+                    this.lockoutUntil = NOW + COOLDOWN_MS;
+                    localStorage.setItem('lockoutUntil', this.lockoutUntil);
+                }
+
+                return false;
+            } catch (error) {
+                alert(error);
+                return false;
             }
-
-            // failure: increment attempts
-            this.attempts++;
-            localStorage.setItem('loginAttempts', this.attempts);
-
-            // if threshold reached, set a 1-minute lockout
-            if (this.attempts >= MAX_ATTEMPTS) {
-                this.lockoutUntil = NOW + COOLDOWN_MS;
-                localStorage.setItem('lockoutUntil', this.lockoutUntil);
-            }
-
-            return false;
         },
 
         logout() {

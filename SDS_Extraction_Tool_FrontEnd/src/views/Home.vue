@@ -28,7 +28,7 @@ async function onFile(e) {
         // Send the file to the API.
         const form = new FormData();
         form.append('file', file);
-        const url = urls.api.extractSDSPfInfo;
+        const url = urls.api.base + urls.api.extractSDSPfInfo;
         const res = await fetch(url, {
             method: 'POST',
             body: form
