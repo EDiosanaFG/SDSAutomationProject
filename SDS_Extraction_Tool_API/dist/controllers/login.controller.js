@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Errors = void 0;
 exports.default = default_1;
+//@ts-ignore
 const bcrypt_1 = require("bcrypt");
 const config_json_1 = require("../json/config.json");
 exports.Errors = {

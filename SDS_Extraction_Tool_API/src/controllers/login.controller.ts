@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+//@ts-ignore
 import { bcrypt } from "bcrypt";
 import { login } from "../json/config.json";
 
