@@ -5,8 +5,8 @@
     "urls": {
         "api": {
             "base": "https://isura-sds-automation-api.duckdns.org/api/",
-            "extractSDSPdfInfo": "extract",
-            "login": "login"
+            "extractSDSPdfInfo": "extract/",
+            "login": "users/login/"
         }
     }
 }
